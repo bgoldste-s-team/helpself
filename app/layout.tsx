@@ -9,7 +9,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body>
+       <nav className="w-full p-4 flex justify-between">
+      <a href="/" className="text-lg font-semibold tracking-widest">
+       Help.me
+      </a>
+       <div className='space-x-2'>
+         <a href="/view-scores" className=" bg-slate-300 text-lg text-black p-4 font-semibold tracking-widest">
+      👀 View Scores
+      </a>
+       <a href="/add-score" className=" bg-white text-lg text-black p-4 font-semibold tracking-widest">
+      ➕Add Score
+      </a>
+   </div>
+   
+    </nav>
         <div className="container" style={{ padding: '50px 0 100px 0' }}>
+
           {children}
         </div>
       </body>
