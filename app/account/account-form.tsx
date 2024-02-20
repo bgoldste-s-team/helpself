@@ -11,7 +11,7 @@ export default function AccountForm({ session }: { session: Session | null }) {
   const [username, setUsername] = useState<string | null>(null)
   const [website, setWebsite] = useState<string | null>(null)
   const [avatar_url, setAvatarUrl] = useState<string | null>(null)
-  const [score, setScore] = useState<int | null>(null)
+
   const user = session?.user
 
   const getProfile = useCallback(async () => {
@@ -76,38 +76,6 @@ export default function AccountForm({ session }: { session: Session | null }) {
   }
 
 
-  async function addScore({
-    score
-    // username,
-    // website,
-    // avatar_url,
-  }: {
-    score: int | null
-    // username: string | null
-    // fullname: string | null
-    // website: string | null
-    // avatar_url: string | null
-  }) {
-    try {
-      setLoading(true)
-
-      let { error } = await supabase.from('mood_score').upsert({
-        created_by: user?.id as string,
-        score:score,
-        // username,
-        // website,
-        // avatar_url,
-        created_at: new Date().toISOString(),
-      })
-      if (error) throw error
-      alert('Profile updated!')
-    } catch (error) {
-      alert('Error updating the data!')
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
     <div className="form-widget">
       <Avatar
@@ -150,15 +118,7 @@ export default function AccountForm({ session }: { session: Session | null }) {
           onChange={(e) => setWebsite(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="score">Score</label>
-        <input
-          id="score"
-          type="int"
-          value={score || ''}
-          onChange={(e) => setScore(e.target.value)}
-        />
-      </div>
+     
 
       <div>
         <button
@@ -168,13 +128,7 @@ export default function AccountForm({ session }: { session: Session | null }) {
         >
           {loading ? 'Loading ...' : 'Update'}
         </button>
-          <button
-          className="button primary block"
-          onClick={() => addScore({score})}
-          disabled={loading}
-        >
-          {loading ? 'Loading ...' : 'ADD SCORE'}
-        </button>
+      
       </div>
 
       <div>

@@ -4,10 +4,18 @@ import { useCallback, useEffect, useState } from 'react'
 import { Database } from '../database.types'
 import { Session, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
+
+interface Score {
+ score: number,
+ created_at: string
+ // add note later
+}
+
 export default function AccountForm({ session }: { session: Session | null }) {
   const supabase = createClientComponentClient<Database>()
   const [loading, setLoading] = useState(true)
-  const [ scores, setScores ] = useState([])
+
+  const [ scores, setScores ] = useState([] as Score[])
   const user = session?.user
 
   const getUserScores = useCallback(async () => {
@@ -57,7 +65,7 @@ export default function AccountForm({ session }: { session: Session | null }) {
         </thead>
         <tbody>
           { scores?.map((item) => 
-           <tr>
+           <tr key={item.created_at}>
              <td className="text-lg text-extrabold">{item.score}</td>
             <td>{new Date(item.created_at).toLocaleString()}</td>
           

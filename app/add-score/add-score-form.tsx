@@ -11,7 +11,7 @@ export default function AddScore({ session }: { session: Session | null }) {
   const [username, setUsername] = useState<string | null>(null)
   const [website, setWebsite] = useState<string | null>(null)
 
-  const [score, setScore] = useState<int | null>(null)
+  const [score, setScore] = useState<number | null>(null)
   const user = session?.user
 
   const getProfile = useCallback(async () => {
@@ -54,7 +54,7 @@ export default function AddScore({ session }: { session: Session | null }) {
     // website,
     // avatar_url,
   }: {
-    score: int | null
+    score: number | null
     // username: string | null
     // fullname: string | null
     // website: string | null
@@ -74,7 +74,7 @@ export default function AddScore({ session }: { session: Session | null }) {
       if (error) throw error
       alert(`Score Saved: ${score}`)
     } catch (error) {
-      alert('Error updating the data!', error )
+      alert('Error updating the data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -88,61 +88,61 @@ export default function AddScore({ session }: { session: Session | null }) {
         <button
           id="score-1"
           value={1}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(1)}
         >1
       </button>
               <button
           id="score-2"
           value={2}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(2)}
         >2
       </button>
               <button
           id="score-3"
           value={3}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(3)}
         >3
       </button>
               <button
           id="score-4"
           value={4}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(4)}
         >4
       </button>
               <button
           id="score-5"
           value={5}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(5)}
         >5
       </button>
               <button
           id="score-6"
           value={6}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(6)}
         >6
       </button>
               <button
           id="score-7"
           value={7}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(7)}
         >7
       </button>
               <button
           id="score-8"
           value={8}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(8)}
         >8
       </button>
               <button
           id="score-9"
           value={9}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(9)}
         >9
       </button>
               <button
           id="score-10"
           value={10}
-          onClick={(e) => setScore(e.target.value)}
+          onClick={(e) => setScore(10)}
         >10
       </button>
      </div>
